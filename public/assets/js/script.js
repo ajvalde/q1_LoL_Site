@@ -5,8 +5,7 @@ $("#submit").click(function(){
   var summonerName = $(".summoner").val();
 
   var apiKey = ""
-  // var sumId = $.get("https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/" + summonerName + "?api_key=" + apiKey)
-  // console.log(sumId)
+
   getId(summonerName,apiKey)
 })
 
@@ -16,8 +15,9 @@ $("#submit").click(function(){
  function getId (sumName,key){
      var sumId = $.get("https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/" + sumName + "?api_key=" + key, function(data){
      var name = $(".summoner").val();
-     var playerId = $("#" + data.synstar.id)
+     var playerId = $(data[name].id)
+     var idString = JSON.stringify(playerId)
+       console.log(idString)
        console.log(playerId)
-       console.log("name " + name)
    })
  }
