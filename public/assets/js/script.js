@@ -16,19 +16,28 @@ $("#submit").click(function(){
      var sumId = $.get("https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/" + sumName + "?api_key=" + key, function(data){
      var name = $(".summoner").val();
      var playerIdObj = $(data[name].id)
-     var playerId = playerIdObj["0"]
+     var playerId = playerIdObj[0]
      var api = key
-     getStats(playerId,key)
+     getUnrankedStats(playerId,key)
 
 
    })
  }
 
- function getStats(playerId,key){
+ function getUnrankedStats(playerId,key){
    var sumStats = $.get("https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/" + playerId + "/summary?season=SEASON2016&api_key=" +key, function(data){
      for(var i=0; i < data.playerStatSummaries.length; i++){
 
-       console.log(data.playerStatSummaries[i])
+
+       if (data.playerStatSummaries[i]["playerStatSummaryType"] === "Unranked"){
+         console.log(data.playerStatSummaries[i].aggregatedStats);
+         $(".post_stats")
+
+       }
+      //  var statsObj = $(data.playerStatSummaries[i])
+      //  var stats = statsObj[0]
+      //  var wins = stats.wins
+      //  console.log(stats["Unranked"])
      }
    })
  }
