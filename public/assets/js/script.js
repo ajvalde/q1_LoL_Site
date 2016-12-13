@@ -4,9 +4,17 @@ $("#submit").click(function(){
   event.preventDefault();
   var summonerName = $(".summoner").val();
 
+
   var apiKey = ""
 
+
   getId(summonerName,apiKey)
+})
+$(".summoner").keyup(function(e){
+  var key = e.which
+  if(key==13){
+    $("#submit").click()
+  }
 })
 
 
@@ -19,7 +27,7 @@ $("#submit").click(function(){
      var playerId = playerIdObj[0]
      var api = key
      getUnrankedStats(playerId,key)
-
+     getRankedStats(playerId,key)
 
    })
  }
@@ -27,14 +35,34 @@ $("#submit").click(function(){
  function getUnrankedStats(playerId,key){
    var sumStats = $.get("https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/" + playerId + "/summary?season=SEASON2016&api_key=" +key, function(data){
      for(var i=0; i < data.playerStatSummaries.length; i++){
-
-
+       //console.log(data.playerStatSummaries[i])
        if (data.playerStatSummaries[i]["playerStatSummaryType"] === "Unranked"){
-         console.log(data.playerStatSummaries[i]);
-         $(".win_val").append(data.playerStatSummaries[i].wins)
-         $(".champ_val").append(data.playerStatSummaries[i].aggregatedStats.totalChampionKills)
-         $(".assist_val").append(data.playerStatSummaries[i].aggregatedStats.totalAssists)
-         $(".minion_val").append(data.playerStatSummaries[i].aggregatedStats.totalMinionKills)
+         $(".uwin_val").text(data.playerStatSummaries[i].wins)
+         $(".uchamp_val").text(data.playerStatSummaries[i].aggregatedStats.totalChampionKills)
+         $(".uassist_val").text(data.playerStatSummaries[i].aggregatedStats.totalAssists)
+         $(".uminion_val").text(data.playerStatSummaries[i].aggregatedStats.totalMinionKills)
+       }
+     }
+     $(".summoner").click(function(){
+       $(".summoner").val("");
+     })
+   })
+ }
+
+ function getRankedStats(playerId,key){
+   var ranked =$.get("https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/" + playerId + "/summary?season=SEASON2016&api_key=" +key, function(data){
+     for(var i=0; i < data.playerStatSummaries.length; i++){
+       if(data.playerStatSummaries[i]["playerStatSummaryType"] === "RankedSolo5x5"){
+         $(".rwin_val").text(data.playerStatSummaries[i].wins)
+         $(".rchamp_val").text(data.playerStatSummaries[i].aggregatedStats.totalChampionKills)
+         $(".rassist_val").text(data.playerStatSummaries[i].aggregatedStats.totalAssists)
+         $(".rminion_val").text(data.playerStatSummaries[i].aggregatedStats.totalMinionKills)
+       } else{
+         $(".rwin_val").text("No STATS")
+         $(".rchamp_val").text("No STATS")
+         $(".rassist_val").text("No STATS")
+         $(".rminion_val").text("No STATS")
+
        }
      }
    })
