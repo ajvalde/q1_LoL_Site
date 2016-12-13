@@ -30,14 +30,12 @@ $("#submit").click(function(){
 
 
        if (data.playerStatSummaries[i]["playerStatSummaryType"] === "Unranked"){
-         console.log(data.playerStatSummaries[i].aggregatedStats);
-         $(".post_stats")
-
+         console.log(data.playerStatSummaries[i]);
+         $(".win_val").append(data.playerStatSummaries[i].wins)
+         $(".champ_val").append(data.playerStatSummaries[i].aggregatedStats.totalChampionKills)
+         $(".assist_val").append(data.playerStatSummaries[i].aggregatedStats.totalAssists)
+         $(".minion_val").append(data.playerStatSummaries[i].aggregatedStats.totalMinionKills)
        }
-      //  var statsObj = $(data.playerStatSummaries[i])
-      //  var stats = statsObj[0]
-      //  var wins = stats.wins
-      //  console.log(stats["Unranked"])
      }
    })
  }
