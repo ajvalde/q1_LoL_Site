@@ -30,7 +30,7 @@ $("#summoner").keyup(function(e){
      getUnrankedStats(playerId,key)
      getRankedStats(playerId,key)
      getAramStats(playerId,key)
-     //top3Champs(playerId,key)
+     top3Champs(playerId,key)
    })
  }
 
@@ -82,9 +82,10 @@ $("#summoner").keyup(function(e){
    })
  }
 
- // function top3Champs(playerId,key){
- //   var champs = $.get("https://na.api.pvp.net/championmastery/location/NA1/player/" + playerId + "/topchampions?api_key=" +key, function(data){
- //     console.log(data);
- //
- //   })
- // }
+ function top3Champs(playerId,key){
+   var champs = $.get("https://na.api.pvp.net/championmastery/location/NA1/player/" + playerId + "/topchampions?api_key=" +key, function(data){
+     console.log(data);
+     console.log(data[0].championId);
+
+   })
+ }
