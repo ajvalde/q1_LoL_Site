@@ -1,84 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <script
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script
     src="https://code.jquery.com/jquery-3.1.1.min.js"
     integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
     crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/practice_script.js"></script>
+  </head>
+  <body>
+    <!--Nav Bar -->
+    <nav>
+      <div class="nav-wrapper blue-grey darken-3">
+        <a href="#" class="brand-logo center">LoL STATS</a>
+      </div>
+    </nav>
+    <!--Search -->
+
+    <div class="container button-holder">
+      <div class="row">
+        <div class="col s12 card-panel blue-grey">
+          <input id="summoner" class="center-align" type="text" placeholder="Summoner Name" value="">
+            <div class="row center">
+              <a id="submit" class="btn btn-small waves-effect waves-light blue-grey lighten-4"><i class="material-icons">search</i></a>
+            </div>
+        </div>
+      </div>
+
+    <!-- Carousel for Stats -->
+    <div class="carousel carousel-slider center" data-indicators="true">
+
+    <div class="carousel-item blue-grey white-text" href="#one!">
+      <h2 class="center-align">Unranked</h2>
+        <table class="centered bordered">
+          <thead>
+            <tr>
+              <th>Wins</th>
+              <th>Champion Kills</th>
+              <th>Assists</th>
+              <th>Minions Killed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <td class="uwin_val">0</td>
+            <td class="uchamp_val">0</td>
+            <td class="uassist_val">0</td>
+            <td class="uminion_val">0</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="carousel-item blue-grey white-text" href="#two!">
+      <h2 class="center-align">Ranked</h2>
+      <table class="centered bordered">
+        <thead>
+          <tr>
+            <th>Wins</th>
+            <th>Champion Kills</th>
+            <th>Assists</th>
+            <th>Minions Killed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          <td class="rwin_val">0</td>
+          <td class="rchamp_val">0</td>
+          <td class="rassist_val">0</td>
+          <td class="rminion_val">0</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="carousel-item blue-grey white-text" href="#three!">
+      <h2 class="center-align">ARAM</h2>
+      <table class="centered bordered">
+        <thead>
+          <tr>
+            <th>Wins</th>
+            <th>Champion Kills</th>
+            <th>Assists</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          <td class="awin_val">0</td>
+          <td class="achamp_val">0</td>
+          <td class="aassist_val">0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
 
 
+    </div>
+    <!--Footer-->
+    <footer class="page-footer blue-grey darken-3">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
 
-<script src="https://www.gstatic.com/firebasejs/3.6.3/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDHuBhUZJ6sFVL6UVuYy1_qkuzH9xjoVyY",
-    authDomain: "lolstats-2b4a5.firebaseapp.com",
-    databaseURL: "https://lolstats-2b4a5.firebaseio.com",
-    storageBucket: "lolstats-2b4a5.appspot.com",
-    messagingSenderId: "276380000686"
-  };
-  firebase.initializeApp(config);
-</script>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="left-align blue-grey-text">LoL STATS</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!"></a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!"></a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!"></a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!"></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2016 Copyright LoL STATS, All rights reserved.
 
-
-
-</head>
-<body>
-  <h1>LoL STATS</h1>
-  <img src="https://cdn.meme.am/cache/instances/folder740/250x250/46930740.jpg" alt="">
-
-  <input class="summoner" type="search" placeholder="Summoner Name">
-  <button id="submit">Submit</button>
-  <h2>Unranked STATS:</h2>
-  <table>
-    <tr>
-      <th>Wins</th>
-      <th>Champion Kills</th>
-      <th>Assists</th>
-      <th>Minions Killed</th>
-    </tr>
-    <tr>
-      <td class="uwin_val"></td>
-      <td class="uchamp_val"></td>
-      <td class="uassist_val"></td>
-      <td class="uminion_val"></td>
-    </tr>
-  </table>
-  <h2>Ranked STATS:</h2>
-  <table>
-    <tr>
-      <th>Wins</th>
-      <th>Champion Kills</th>
-      <th>Assists</th>
-      <th>Minions Killed</th>
-    </tr>
-    <tr>
-      <td class="rwin_val"></td>
-      <td class="rchamp_val"></td>
-      <td class="rassist_val"></td>
-      <td class="rminion_val"></td>
-    </tr>
-  </table>
-  <h2>ARAM STATS:</h2>
-  <table>
-    <tr>
-      <th>Wins</th>
-      <th>Champion Kills</th>
-      <th>Assists</th>
-    </tr>
-    <tr>
-      <td class="awin_val"></td>
-      <td class="achamp_val"></td>
-      <td class="aassist_val"></td>
-    </tr>
-  </table>
-
-    <script src="./assets/js/script.js" charset="uft-8"></script>
+            </div>
+          </div>
+        </footer>
   </body>
 </html>
