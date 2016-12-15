@@ -83,7 +83,7 @@ function getAramStats(playerId, key) {
 
 function top3Champs(playerId, key) {
     var champs = $.get("https://na.api.pvp.net/championmastery/location/NA1/player/" + playerId + "/topchampions?api_key=" + key, function(data) {
-        console.log(data);
+        //console.log(data);
         $(".l_one").text(data[0].championLevel)
         $(".l_two").text(data[1].championLevel)
         $(".l_three").text(data[2].championLevel)
@@ -97,28 +97,41 @@ function top3Champs(playerId, key) {
             var arr = [1, 2, 3]
             cId.push(data[i].championId)
         }
-        getChampImg(cId, key)
+        getChampName(cId, key)
+
     })
 }
 
-function getChampImg(cId, key) {
+function getChampName(cId, key) {
     var Ids = cId
-        //console.log(Ids);
+    var names = []
+    getChampImg(names)
+    //console.log(names);
     for (var i = 0; i < Ids.length; i++) {
-        //console.log("ids " + Ids[i]);
         var champId = ""
         champId = champId + Ids[i]
-        console.log(champId);
-
-        $.get("https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + champId + "?champData=image&api_key=" + key, function(data) {
-            console.log(data.name);
-            console.log(data);
+        var champJpg = $.get("https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + champId + "?champData=image&api_key=" + key, function(data) {
+            var champs = []
+            champs.push(data)
+            for (var j = 0; j < champs.length; j++) {
+                names.push(data.name)
+                    //console.log(champs[j]);
+                if ($(".c_one").attr("id") == champs[j].id) {
+                    $(".c_one").text(data.name)
+                } else if ($(".c_two").attr("id") == champs[j].id) {
+                    $(".c_two").text(data.name)
+                } else if ($(".c_three").attr("id") == champs[j].id) {
+                    $(".c_three").text(data.name)
+                }
+            }
         })
-        if ((["h5"]["#id_one"]) === data.id) {
-            //$("#id_one").text(data.name);
-            $(".c_one").text(data.name)
-            console.log("name" + data.name);
-        }
     }
 
 }
+
+// function getChampImg(names){
+//   var cNames = names
+//   console.log(cNames);
+//     for(i = 0; i < cNames.length; i++){
+//     }
+// }
