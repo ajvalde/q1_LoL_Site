@@ -84,7 +84,25 @@ function getAramStats(playerId, key) {
 function top3Champs(playerId, key) {
     var champs = $.get("https://na.api.pvp.net/championmastery/location/NA1/player/" + playerId + "/topchampions?api_key=" + key, function(data) {
         console.log(data);
-        console.log(data[0].championId);
-
+        $(".l_one").text(data[0].championLevel)
+        $(".l_two").text(data[1].championLevel)
+        $(".l_three").text(data[2].championLevel)
+        var cId = []
+            //console.log(cId);
+        for (var i = 0; i < data.length; i++) {
+            //console.log(data[i].championId);
+            var arr = [1, 2, 3]
+            cId.push(data[i].championId)
+        }
+        getChampImg(cId, key)
     })
+}
+
+function getChampImg(cId, key) {
+    var Ids = cId
+    //console.log(Ids);
+    for(var i = 0; i < Ids.length; i++ ){
+      console.log(Ids[i]);
+
+    }
 }
