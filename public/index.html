@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
     <script src="assets/js/app.js"></script>
@@ -24,21 +25,21 @@
 
     <div class="container button-holder">
         <div class="row">
-            <div class="col s12 card-panel blue-grey">
+            <div class="search_card col s12 card-panel blue-grey">
                 <input id="summoner" class="center-align" type="text" placeholder="Summoner Name" value="">
                 <div class="row center">
-                    <a id="submit" class="btn btn-small waves-effect waves-light blue-grey lighten-4"><i class="material-icons">search</i></a>
+                    <a id="submit" class="butt btn-floating btn-small waves-effect waves-light blue-grey lighten-4"><i class="material-icons">search</i></a>
                 </div>
             </div>
         </div>
         <!--Top 3 Champs  -->
         <div class="row">
-            <div class="card-panel col s12 blue-grey white-text">
+            <div class="top_card card-panel col s12 blue-grey white-text">
                 <h4 class="center-align">Top 3 Champions</h4>
                 <div class="row center-align">
                     <div class="col s4">
-                        <h5 class="c_one">Champ</h5>
-                        <img class="circle" src="assets/img/aww.png" alt="">
+                        <h5 id="id_one" class="c_one"></h5>
+                        <img class="img_one circle z-depth-5" src="assets/img/aww.png" alt="">
                         <table class="centered">
                             <thead>
                                 <tr>
@@ -53,8 +54,8 @@
                         </table>
                     </div>
                     <div class=" col s4">
-                        <h5 class="c_two">Champ</h5>
-                        <img class="circle" src="assets/img/aww.png" alt="">
+                        <h5 id="id_two" class="c_two"></h5>
+                        <img class="img_two circle z-depth-3" src="assets/img/aww.png" alt="">
                         <table class="centered">
                             <thead>
                                 <tr>
@@ -69,8 +70,8 @@
                         </table>
                     </div>
                     <div class="col s4">
-                        <h5 class="c_three">Champ</h5>
-                        <img class="circle" src="assets/img/aww.png" alt="">
+                        <h5 id="id_three" class="c_three"></h5>
+                        <img class="img_three circle z-depth-2" src="assets/img/aww.png" alt="">
                         <table class="centered">
                             <thead>
                                 <tr>
@@ -88,7 +89,7 @@
             </div>
         </div>
         <!-- Carousel for Stats -->
-        <div class="carousel carousel-slider center" data-indicators="true">
+        <div class="car carousel carousel-slider center z-depth-2" data-indicators="true">
 
             <div class="carousel-item blue-grey white-text" href="#one!">
                 <h2 class="center-align">Unranked</h2>

@@ -1,9 +1,27 @@
 body {
-   display: flex;
-   min-height: 100vh;
-   flex-direction: column;
- }
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    /*background-image: url("/Users/anthony/Galvanize/q1_LoL_project/public/assets/img/blueback.jpg");*/
+    background: linear-gradient(45deg, #2f445b 0%,#2f445b 7%,#2f445b 16%,#5c8cb0 74%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /*background-size: cover;*/
+    font-family: 'Exo', sans-serif;
+}
 
- main {
-   flex: 1 0 auto;
- }
+main {
+    flex: 1 0 auto;
+}
+
+.search_card {
+    border-radius: 2em;
+}
+
+.top_card {
+    border-radius: 2em;
+}
+
+.car {
+    border-radius: 2em;
+}

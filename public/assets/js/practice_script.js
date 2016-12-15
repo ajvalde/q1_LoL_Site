@@ -88,6 +88,9 @@ function top3Champs(playerId, key) {
         $(".l_two").text(data[1].championLevel)
         $(".l_three").text(data[2].championLevel)
         var cId = []
+        $('#id_one').attr('id', data[0].championId)
+        $('#id_two').attr('id', data[1].championId)
+        $('#id_three').attr('id', data[2].championId)
             //console.log(cId);
         for (var i = 0; i < data.length; i++) {
             //console.log(data[i].championId);
@@ -100,9 +103,22 @@ function top3Champs(playerId, key) {
 
 function getChampImg(cId, key) {
     var Ids = cId
-    //console.log(Ids);
-    for(var i = 0; i < Ids.length; i++ ){
-      console.log(Ids[i]);
+        //console.log(Ids);
+    for (var i = 0; i < Ids.length; i++) {
+        //console.log("ids " + Ids[i]);
+        var champId = ""
+        champId = champId + Ids[i]
+        console.log(champId);
 
+        $.get("https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + champId + "?champData=image&api_key=" + key, function(data) {
+            console.log(data.name);
+            console.log(data);
+        })
+        if ((["h5"]["#id_one"]) === data.id) {
+            //$("#id_one").text(data.name);
+            $(".c_one").text(data.name)
+            console.log("name" + data.name);
+        }
     }
+
 }
