@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 
 
-        var apiKey = "RGAPI-7d614e06-7a14-4e61-801d-c73720b9dc1a"
+        var apiKey = ""
 
 
         getId(summonerName, apiKey)
