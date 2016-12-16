@@ -88,37 +88,43 @@ function top3Champs(playerId, key) {
         $(".l_two").text(data[1].championLevel)
         $(".l_three").text(data[2].championLevel)
         var cId = []
+            //console.log(cId);
         $('#id_one').attr('id', data[0].championId)
         $('#id_two').attr('id', data[1].championId)
         $('#id_three').attr('id', data[2].championId)
-            //console.log(cId);
+        console.log(cId);
         for (var i = 0; i < data.length; i++) {
-            //console.log(data[i].championId);
+            console.log(data[i].championId);
             var arr = [1, 2, 3]
             cId.push(data[i].championId)
         }
         getChampName(cId, key)
-
+        console.log(cId);
     })
 }
 
 function getChampName(cId, key) {
     var Ids = cId
-    var names = []
-    getChampImg(names)
-    //console.log(names);
+
+    console.log(Ids);
     for (var i = 0; i < Ids.length; i++) {
         var champId = ""
         champId = champId + Ids[i]
+        var names = []
         var champJpg = $.get("https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + champId + "?champData=image&api_key=" + key, function(data) {
+            //console.log(data);
+            //console.log(champId[0]);
             var champs = []
+            //console.log(data.name);
             champs.push(data)
+            names.push(data.name)
+
+
             for (var j = 0; j < champs.length; j++) {
-                names.push(data.name)
-                    //console.log(champs[j]);
                 if ($(".c_one").attr("id") == champs[j].id) {
                     $(".c_one").text(data.name)
                 } else if ($(".c_two").attr("id") == champs[j].id) {
+
                     $(".c_two").text(data.name)
                 } else if ($(".c_three").attr("id") == champs[j].id) {
                     $(".c_three").text(data.name)
@@ -126,12 +132,4 @@ function getChampName(cId, key) {
             }
         })
     }
-
 }
-
-// function getChampImg(names){
-//   var cNames = names
-//   console.log(cNames);
-//     for(i = 0; i < cNames.length; i++){
-//     }
-// }
