@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 
 
-        var apiKey = ""
+        var apiKey = "RGAPI-7d614e06-7a14-4e61-801d-c73720b9dc1a"
 
 
         getId(summonerName, apiKey)
@@ -37,7 +37,6 @@ function getId(sumName, key) {
 function getUnrankedStats(playerId, key) {
     var sumStats = $.get("https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/" + playerId + "/summary?season=SEASON2016&api_key=" + key, function(data) {
         for (var i = 0; i < data.playerStatSummaries.length; i++) {
-            //console.log(data.playerStatSummaries[i])
             if (data.playerStatSummaries[i]["playerStatSummaryType"] === "Unranked") {
                 $(".uwin_val").text(data.playerStatSummaries[i].wins)
                 $(".uchamp_val").text(data.playerStatSummaries[i].aggregatedStats.totalChampionKills)
@@ -82,13 +81,11 @@ function getAramStats(playerId, key) {
 }
 
 function top3Champs(playerId, key) {
-    var champs = $.get("https://na.api.pvp.net/championmastery/location/NA1/player/" + playerId + "/topchampions?api_key=" + key, function(data) {
-        //console.log(data);
+    var champs = $.get("https://galvanize-cors-proxy.herokuapp.com/https://na.api.pvp.net/championmastery/location/NA1/player/" + playerId + "/topchampions?api_key=" + key, function(data) {
         $(".l_one").text(data[0].championLevel)
         $(".l_two").text(data[1].championLevel)
         $(".l_three").text(data[2].championLevel)
         var cId = []
-            //console.log(cId);
         $('#id_one').attr('id', data[0].championId)
         $('#id_two').attr('id', data[1].championId)
         $('#id_three').attr('id', data[2].championId)
@@ -112,10 +109,7 @@ function getChampName(cId, key) {
         champId = champId + Ids[i]
         var names = []
         var champJpg = $.get("https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + champId + "?champData=image&api_key=" + key, function(data) {
-            //console.log(data);
-            //console.log(champId[0]);
             var champs = []
-            //console.log(data.name);
             champs.push(data)
             names.push(data.name)
 
